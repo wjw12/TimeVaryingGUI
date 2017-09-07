@@ -1,0 +1,1 @@
+set(CMAKE_AUTOMATIC ON)

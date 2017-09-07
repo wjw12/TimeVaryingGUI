@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{303B38A6-1544-4696-8B26-6DE1B7207CA0}</ProjectGuid>
+    <RootNamespace>MyStartingProject</RootNamespace>
+    <ProjectName>StyleTF</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>C:\Users\GV2\Desktop\wjw\code\FreeImage\Dist\x32;C:\Users\GV2\Desktop\wjw\code\glew-1.10.0\lib\Release\Win32;C:\Users\GV2\Desktop\wjw\code\freeglut\lib;C:\Users\GV2\Desktop\wjw\code\glew-1.10.0\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>C:\Users\GV2\Desktop\wjw\code\FreeImage\Dist\x32;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Users\GV2\Desktop\wjw\code\FreeImage\Dist\x32;C:\Users\GV2\Desktop\wjw\code;C:\Users\GV2\Desktop\wjw\code\glew-1.10.0\include;C:\Users\GV2\Desktop\wjw\code\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>FreeImage.lib;glew32.lib;glew32s.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Camera.cpp" />
+    <ClCompile Include="..\GPURaycaster.cpp" />
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\OpenGLRenderer.cpp" />
+    <ClCompile Include="..\Shader.cpp" />
+    <ClCompile Include="..\ShaderManager.cpp" />
+    <ClCompile Include="..\tinyxml2.cpp" />
+    <ClCompile Include="..\TransferFunction.cpp" />
+    <ClCompile Include="..\VolumeDataset.cpp" />
+    <ClCompile Include="..\VolumeRenderer.cpp" />
+    <ClCompile Include="..\VoxelReader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Camera.h" />
+    <ClInclude Include="..\GLM.h" />
+    <ClInclude Include="..\GPURaycaster.h" />
+    <ClInclude Include="..\OpenGLRenderer.h" />
+    <ClInclude Include="..\Shader.h" />
+    <ClInclude Include="..\ShaderManager.h" />
+    <ClInclude Include="..\stb_image.h" />
+    <ClInclude Include="..\tinyxml2.h" />
+    <ClInclude Include="..\TransferFunction.h" />
+    <ClInclude Include="..\VolumeDataset.h" />
+    <ClInclude Include="..\VolumeRenderer.h" />
+    <ClInclude Include="..\VoxelReader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ProcessingFragShader.txt" />
+    <Text Include="ProcessingVertShader.txt" />
+    <Text Include="TransFuncFragShader.txt" />
+    <Text Include="TransFuncVertShader.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StyleTransFunc.frag" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1202</width>
+    <height>654</height>
+   </rect>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="MainOpenGLWidget" name="mainOpenGLWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+   </widget>
+   <widget class="ImageEditor" name="TF_editor" native="true">
+    <property name="geometry">
+     <rect>
+      <x>875</x>
+      <y>20</y>
+      <width>256</width>
+      <height>256</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>256</width>
+      <height>256</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>256</width>
+      <height>256</height>
+     </size>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="DrawButton">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>30</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Draw</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="EditButton">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>70</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="ResetButton">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>110</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="SaveButton">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>150</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="LoadButton">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>190</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>470</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>999</number>
+    </property>
+    <property name="value">
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>470</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start Frame:</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>420</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Frame</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="radioButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>440</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Animation</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>340</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edge Enhance:</string>
+    </property>
+   </widget>
+   <widget class="EnhanceSettingBox" name="doubleSpinBox">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>340</y>
+      <width>62</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>60</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>310</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Overall Opacity:</string>
+    </property>
+   </widget>
+   <widget class="OpacitySettingBox" name="spinBox_2">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>310</y>
+      <width>61</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>99</number>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_5">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>340</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>gradient</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_3">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>300</y>
+      <width>101</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>frame difference</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_4">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>320</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>n*v</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>280</y>
+      <width>141</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Improve Editor Opacity</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>40</y>
+      <width>62</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <double>0.010000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>9999.989999999999782</double>
+    </property>
+    <property name="value">
+     <double>1.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>20</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Scale</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1202</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_Data"/>
+    <addaction name="actionLoad_Configuration"/>
+    <addaction name="actionSave_Configuration"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLoad_Data">
+   <property name="text">
+    <string>Load Data</string>
+   </property>
+  </action>
+  <action name="actionLoad_Configuration">
+   <property name="text">
+    <string>Load Configuration</string>
+   </property>
+  </action>
+  <action name="actionSave_Configuration">
+   <property name="text">
+    <string>Save Configuration</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ImageEditor</class>
+   <extends>QWidget</extends>
+   <header>imageeditor.h</header>
+   <container>1</container>
+   <slots>
+    <signal>imageUpdated(QImage*)</signal>
+    <signal>sendList(int,double*)</signal>
+    <signal>disableSetting()</signal>
+    <signal>sendOpacity(int)</signal>
+    <slot>changeDrawMode()</slot>
+    <slot>changeEditMode()</slot>
+    <slot>reset()</slot>
+    <slot>saveConfig()</slot>
+    <slot>loadConfig()</slot>
+    <slot>edgeEnhanceModified(double*)</slot>
+    <slot>overallOpacityChanged(int)</slot>
+    <slot>improveEditorOpacity(int)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MainOpenGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>mainopenglwidget.h</header>
+   <slots>
+    <signal>setTimeVarying(bool)</signal>
+    <slot>changeOneStepMode()</slot>
+    <slot>changeAnimationMode()</slot>
+    <slot>changeStartFrame(int)</slot>
+    <slot>setEdgeEnhance(double*)</slot>
+    <slot>reloadData()</slot>
+    <slot>useFrameVarianceShader()</slot>
+    <slot>useNV_Shader()</slot>
+    <slot>useGradientShader()</slot>
+    <slot>setIntensityScale(double)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>EnhanceSettingBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>enhancesettingbox.h</header>
+   <slots>
+    <signal>sendList(double*)</signal>
+    <slot>disable()</slot>
+    <slot>enable(int,double*)</slot>
+    <slot>updateValue(double)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>OpacitySettingBox</class>
+   <extends>QSpinBox</extends>
+   <header>opacitysettingbox.h</header>
+   <slots>
+    <slot>enable(int)</slot>
+    <slot>disable()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>DrawButton</sender>
+   <signal>clicked()</signal>
+   <receiver>TF_editor</receiver>
+   <slot>changeDrawMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>901</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>EditButton</sender>
+   <signal>clicked()</signal>
+   <receiver>TF_editor</receiver>
+   <slot>changeEditMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>838</x>
+     <y>120</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>894</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ResetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>TF_editor</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>830</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>882</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SaveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>TF_editor</receiver>
+   <slot>saveConfig()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>843</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>892</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LoadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>TF_editor</receiver>
+   <slot>loadConfig()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>832</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>883</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TF_editor</sender>
+   <signal>imageUpdated(QImage*)</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>textureUpdated(QImage*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>973</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>786</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>changeStartFrame(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>912</x>
+     <y>509</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>791</x>
+     <y>520</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>changeOneStepMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>848</x>
+     <y>454</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>787</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>changeAnimationMode()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>893</x>
+     <y>477</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>774</x>
+     <y>493</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TF_editor</sender>
+   <signal>disableSetting()</signal>
+   <receiver>doubleSpinBox</receiver>
+   <slot>disable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1130</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1138</x>
+     <y>394</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TF_editor</sender>
+   <signal>sendList(int,double*)</signal>
+   <receiver>doubleSpinBox</receiver>
+   <slot>enable(int,double*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1057</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1119</x>
+     <y>394</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBox</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>doubleSpinBox</receiver>
+   <slot>updateValue(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1092</x>
+     <y>394</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1105</x>
+     <y>394</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBox</sender>
+   <signal>sendList(double*)</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>setEdgeEnhance(double*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1084</x>
+     <y>394</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>748</x>
+     <y>585</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBox</sender>
+   <signal>sendList(double*)</signal>
+   <receiver>TF_editor</receiver>
+   <slot>edgeEnhanceModified(double*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1134</x>
+     <y>394</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1075</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TF_editor</sender>
+   <signal>sendOpacity(int)</signal>
+   <receiver>spinBox_2</receiver>
+   <slot>enable(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1094</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1128</x>
+     <y>364</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TF_editor</sender>
+   <signal>disableSetting()</signal>
+   <receiver>spinBox_2</receiver>
+   <slot>disable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1110</x>
+     <y>292</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1133</x>
+     <y>364</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TF_editor</receiver>
+   <slot>overallOpacityChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1097</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>893</x>
+     <y>301</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLoad_Data</sender>
+   <signal>triggered()</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>reloadData()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>332</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mainOpenGLWidget</sender>
+   <signal>setTimeVarying(bool)</signal>
+   <receiver>radioButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>860</x>
+     <y>481</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mainOpenGLWidget</sender>
+   <signal>setTimeVarying(bool)</signal>
+   <receiver>radioButton_2</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>843</x>
+     <y>461</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mainOpenGLWidget</sender>
+   <signal>setTimeVarying(bool)</signal>
+   <receiver>spinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>732</x>
+     <y>541</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>904</x>
+     <y>520</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mainOpenGLWidget</sender>
+   <signal>setTimeVarying(bool)</signal>
+   <receiver>doubleSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>750</x>
+     <y>563</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1135</x>
+     <y>394</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>useFrameVarianceShader()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>895</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>338</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>useNV_Shader()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>851</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>754</x>
+     <y>364</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>useGradientShader()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>852</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>725</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSave_Configuration</sender>
+   <signal>triggered()</signal>
+   <receiver>TF_editor</receiver>
+   <slot>saveConfig()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1002</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLoad_Configuration</sender>
+   <signal>triggered()</signal>
+   <receiver>TF_editor</receiver>
+   <slot>loadConfig()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1002</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>TF_editor</receiver>
+   <slot>improveEditorOpacity(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1018</x>
+     <y>324</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>922</x>
+     <y>293</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>doubleSpinBox_2</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>mainOpenGLWidget</receiver>
+   <slot>setIntensityScale(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1163</x>
+     <y>84</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>670</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>
