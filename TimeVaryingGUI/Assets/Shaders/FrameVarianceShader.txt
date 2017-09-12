@@ -1,0 +1,156 @@
+#version 420
+#extension GL_EXT_shader_image_load_store : enable
+
+layout(location = 0) out vec4 FragColor;
+
+in vec3 facePos;
+
+uniform sampler3D volume;
+uniform sampler3D tempvolume;
+uniform sampler1D transferFunc;
+uniform vec3 camPos;
+
+uniform int maxRaySteps;
+uniform float rayStepSize;
+uniform float gradientStepSize;
+
+uniform vec3 lightPosition;
+
+uniform sampler2D tfTexture2d;
+
+uniform float enhanceList[30];
+
+uniform float intensityScale;
+
+
+vec3 CalculateNormal(vec3 texCoord)
+{
+	vec3 sample1, sample2;
+
+	sample1.x = texture(volume, texCoord - vec3(gradientStepSize, 0.0f, 0.0f)).x;
+	sample2.x = texture(volume, texCoord + vec3(gradientStepSize, 0.0f, 0.0f)).x;
+	sample1.y = texture(volume, texCoord - vec3(0.0f, gradientStepSize, 0.0f)).x;
+	sample2.y = texture(volume, texCoord + vec3(0.0f, gradientStepSize, 0.0f)).x;
+	sample1.z = texture(volume, texCoord - vec3(0.0f, 0.0f, gradientStepSize)).x;
+	sample2.z = texture(volume, texCoord + vec3(0.0f, 0.0f, gradientStepSize)).x;
+
+	return normalize(sample2 - sample1);
+}
+
+
+vec4 CalculateLighting(vec4 color, vec3 N)
+{
+	vec3 lightDirection = normalize(facePos - lightPosition);
+	vec4 diffuseLight = vec4(0.8f, 0.8f, 0.8f, 1.0f);
+	vec4 specularLight = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	vec3 L, H;
+
+	L = normalize(lightDirection);
+	H = normalize(L + normalize(-facePos));
+	
+	float diff = clamp(dot(N,L), 0.0f, 1.0f);
+	float amb = 0.4f;
+
+	return ((color * diff) + (color * amb));
+}
+
+vec3 gradient(vec3 texCoord)
+{
+	vec3 sample1, sample2;
+	sample1.x = texture(volume, texCoord - vec3(gradientStepSize, 0.0f, 0.0f)).x;
+	sample2.x = texture(volume, texCoord + vec3(gradientStepSize, 0.0f, 0.0f)).x;
+	sample1.y = texture(volume, texCoord - vec3(0.0f, gradientStepSize, 0.0f)).x;
+	sample2.y = texture(volume, texCoord + vec3(0.0f, gradientStepSize, 0.0f)).x;
+	sample1.z = texture(volume, texCoord - vec3(0.0f, 0.0f, gradientStepSize)).x;
+	sample2.z = texture(volume, texCoord + vec3(0.0f, 0.0f, gradientStepSize)).x;
+	
+	return (sample2 - sample1) / gradientStepSize / 2; // gradient
+}
+
+vec4 GetColor(vec3 texCoord, vec3 view) 
+{
+        float index = texture(volume, texCoord).x * intensityScale;
+
+	float change = index - texture(tempvolume, texCoord).x;
+
+        float relative_change;
+        if (index != 0.) relative_change = abs(change/index);
+        else relative_change = 0;
+	
+	vec4 color;
+
+        float c = abs(change)*200;
+        //float c = change*100 + 1;
+
+
+	color = texture(tfTexture2d, vec2(index, c));
+
+        int i=0;
+        float factor;
+        while(i<10 && enhanceList[i*3]>0.f) {
+        // 3i, 3i+1, 3i+2 are indices of setting for one range
+            if (index > enhanceList[3*i] && index < enhanceList[3*i+1]) {
+                factor = enhanceList[3*i+2];
+                if (relative_change > 1/factor) color.a *= (relative_change*factor);
+            }
+            i = i + 1;
+        }
+
+        return color;
+        //if (index == 0.) return vec4(0,0,0,0);
+        //else return vec4(1,1,1,0.3);
+}
+	
+
+void main()
+{
+	vec4 finalColor = vec4(0.0f, 0.0f, 0.0f, 0.0f);
+	vec3 position = facePos;
+	vec3 texCoord;
+	vec4 color;
+	vec3 normal;
+
+	vec3 direction = position - camPos;
+	direction = normalize(direction);
+
+	float absorption = 0.0f;
+	float opacity;
+	
+
+	for(int i=0; i<maxRaySteps; i++)
+	{
+		color = vec4(0.0f, 0.0f, 0.0f, 0.0f);
+		
+		texCoord = (position + 1.0f) / 2.0f; 
+		color = GetColor(texCoord, direction);
+		opacity = color.w;
+
+		normal = CalculateNormal(texCoord);
+		color = CalculateLighting(color, normal);
+			
+
+		if ((absorption + opacity) > 1.0f)
+			finalColor += color*(1.0f - absorption);
+		else
+			finalColor += color*opacity;
+
+		absorption += opacity;
+
+		position = position + (direction * rayStepSize);
+
+
+
+		if (abs(position.x) > 1.0f || abs(position.y) > 1.0f || abs(position.z) > 1.0f || absorption >= 0.95f)
+		{
+		// show a proxy cube
+			if (absorption < 1.0f)
+				finalColor += vec4(0.7f, 0.7f, 0.7f, 1.0f) * (1.0f - absorption);
+
+			break;
+		}
+	}
+
+
+	FragColor = finalColor;
+}
